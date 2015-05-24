@@ -46,6 +46,9 @@
 			<Toolbar>
 				<ToolbarSpacer/>
 				<Button
+					icon="sap-icon://bar-code"
+					press="onBarcodePress" />
+				<Button
 					icon="sap-icon://add"
 					tooltip="{i18n>masterFooterAddButtonTooltip}"
 					press="onAddProduct" />

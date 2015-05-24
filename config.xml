@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget
+  xmlns:gap = "http://phonegap.com/ns/1.0"
+  id="bf.scanner"
+  version="0.1"
+  xmlns="http://www.w3.org/ns/widgets">
+  <name>Barcode UI5 Test</name>
+  <description>
+    Barcode in UI5 Test
+  </description>
+  <author email="john.murray@bluefinsolutions.com" href="http://bluefinsolutions.com">
+    John Murray / Bluefin Solutions
+  </author>
+  <content src="index.html" />
+  <access origin="*" />
+
+  <!-- Camera Plugin , stopping geolocation currently -->
+  <gap:plugin name="com.sharinglabs.cordova.plugin.cache" version="1.0.0" />
+
+  <gap:plugin name="com.phonegap.plugins.barcodescanner"/>
+
+
+
+  <gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance" overwrite="true"> <false/>
+  </gap:config-file>
+
+  <gap:config-file platform="ios" parent="UIStatusBarHidden" overwrite="true"> <true/> </gap:config-file>
+
+
+</widget>
