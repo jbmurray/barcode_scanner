@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="bf.scanner.view.AddProduct"
+	controllerName="bf.scanner.controller.AddProduct"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form"

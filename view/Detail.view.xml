@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="bf.scanner.view.Detail"
+	controllerName="bf.scanner.controller.Detail"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m">
@@ -44,7 +44,7 @@
 						text="{i18n>iconTabFilterSupplier}"
 						icon="sap-icon://supplier">
 						<content>
-							<core:Fragment fragmentName="bf.scanner.view.SupplierAddressForm" type="XML" />
+							<core:Fragment fragmentName="bf.scanner.fragment.SupplierAddressForm" type="XML" />
 						</content>
 					</IconTabFilter>
 					<IconTabFilter
@@ -52,7 +52,7 @@
 						text="{i18n>iconTabFilterCategory}"
 						icon="sap-icon://hint">
 						<content>
-							<core:Fragment fragmentName="bf.scanner.view.CategoryInfoForm" type="XML" />
+							<core:Fragment fragmentName="bf.scanner.fragment.CategoryInfoForm" type="XML" />
 						</content>
 					</IconTabFilter>
 				</items>

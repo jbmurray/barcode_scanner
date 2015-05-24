@@ -1,7 +1,7 @@
 jQuery.sap.require("bf.scanner.util.Formatter");
 jQuery.sap.require("bf.scanner.util.Controller");
 
-bf.scanner.util.Controller.extend("bf.scanner.view.Master", {
+bf.scanner.util.Controller.extend("bf.scanner.controller.Master", {
 
 	onInit : function() {
 		this.oInitialLoadFinishedDeferred = jQuery.Deferred();

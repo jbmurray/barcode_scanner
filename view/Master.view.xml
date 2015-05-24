@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="bf.scanner.view.Master"
+	controllerName="bf.scanner.controller.Master"
 	displayBlock="true"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m">
