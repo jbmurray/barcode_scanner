@@ -9,16 +9,8 @@ module.exports = function(grunt) {
           archive: 'barcode_test.zip'
         },
         files: [
-          { src: ['webapp/css/**'], dest: '' },
-          { src: ['webapp/i18n/**'], dest: '' },
-          { src: ['webapp/img/**'], dest: '' },
-          { src: ['webapp/model/**'], dest: '' },
-          { src: ['webapp/util/**'], dest: '' },
-          { src: ['webapp/view/**'], dest: '' },
-          { src: ['webapp/Component.js'], dest: '' },
-          { src: ['webapp/index.html'], dest: '' },
-          { src: ['config.xml'], dest: '' },
-          { src: ['webapp/MyRouter.js'], dest: '' }
+          { expand: true, src: ['**'], cwd: "webapp/" },
+          { src: ['config.xml'], dest: '' }
         ]
       }
     },

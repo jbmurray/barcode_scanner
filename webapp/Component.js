@@ -78,18 +78,6 @@ sap.ui.core.UIComponent.extend("jm.scanner.Component", {
 		});
 		this.setModel(i18nModel, "i18n");
 
-		var sProxyServiceUrl = mConfig.serviceConfig.proxiedServiceUrl;
-		var sFullServiceUrl = mConfig.serviceConfig.fullServiceUrl;
-		if(bIsMobile){
-			var sServiceUrl = sFullServiceUrl;
-		} else {
-			var sServiceUrl = sProxyServiceUrl;
-		}
-
-		// Create and set domain model to the component
-		var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl, true);
-		this.setModel(oModel);
-
 		// set device model
 		var bIsPhone = sap.ui.Device.system.phone;
 		var bIsMobile = !sap.ui.Device.system.desktop;
@@ -102,6 +90,18 @@ sap.ui.core.UIComponent.extend("jm.scanner.Component", {
 		});
 		oDeviceModel.setDefaultBindingMode("OneWay");
 		this.setModel(oDeviceModel, "device");
+
+		var sProxyServiceUrl = mConfig.serviceConfig.proxiedServiceUrl;
+		var sFullServiceUrl = mConfig.serviceConfig.fullServiceUrl;
+		if(bIsMobile){
+			var sServiceUrl = sFullServiceUrl;
+		} else {
+			var sServiceUrl = sProxyServiceUrl;
+		}
+
+		// Create and set domain model to the component
+		var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl, true);
+		this.setModel(oModel);
 
 		this.getRouter().initialize();
 
