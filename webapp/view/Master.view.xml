@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="bf.scanner.controller.Master"
+	controllerName="jm.scanner.controller.Master"
 	displayBlock="true"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m">
@@ -35,7 +35,7 @@
 						title="{Name}"
 						number="{
 							path: 'Price',
-							formatter: 'bf.scanner.util.Formatter.currencyValue'
+							formatter: 'jm.scanner.util.Formatter.currencyValue'
 						}"
 						numberUnit="USD">
 					</ObjectListItem>

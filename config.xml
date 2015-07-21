@@ -4,12 +4,12 @@
   id="bf.scanner"
   version="0.1"
   xmlns="http://www.w3.org/ns/widgets">
-  <name>Barcode UI5 Test</name>
+  <name>Barcode Scanner UI5</name>
   <description>
-    Barcode in UI5 Test
+    Barcode Scanning in UI5
   </description>
-  <author email="john.murray@bluefinsolutions.com" href="http://bluefinsolutions.com">
-    John Murray / Bluefin Solutions
+  <author email="jbm1991@gmail.com" href="http://jmurray.me">
+    John Murray
   </author>
   <content src="index.html" />
   <access origin="*" />

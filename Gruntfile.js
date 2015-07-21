@@ -17,7 +17,7 @@ module.exports = function(grunt) {
           { src: ['webapp/view/**'], dest: '' },
           { src: ['webapp/Component.js'], dest: '' },
           { src: ['webapp/index.html'], dest: '' },
-          { src: ['webapp/config.xml'], dest: '' },
+          { src: ['config.xml'], dest: '' },
           { src: ['webapp/MyRouter.js'], dest: '' }
         ]
       }

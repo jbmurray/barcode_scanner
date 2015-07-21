@@ -17,7 +17,8 @@ sap.ui.core.UIComponent.extend("jm.scanner.Component", {
 			resourceBundle : "i18n/messageBundle.properties",
 			serviceConfig : {
 				name : "Honda",
-				serviceUrl : "/proxy/ODATAORG/V2/(S(jbm1991))/OData/OData.svc/"
+				proxiedServiceUrl : "/proxy/ODATAORG/V2/(S(jbm1991))/OData/OData.svc/",
+				fullServiceUrl: "http://services.odata.org/V2/(S(jbm1991))/OData/OData.svc/"
 			}
 		},
 
@@ -77,7 +78,13 @@ sap.ui.core.UIComponent.extend("jm.scanner.Component", {
 		});
 		this.setModel(i18nModel, "i18n");
 
-		var sServiceUrl = mConfig.serviceConfig.serviceUrl;
+		var sProxyServiceUrl = mConfig.serviceConfig.proxiedServiceUrl;
+		var sFullServiceUrl = mConfig.serviceConfig.fullServiceUrl;
+		if(bIsMobile){
+			var sServiceUrl = sFullServiceUrl;
+		} else {
+			var sServiceUrl = sProxyServiceUrl;
+		}
 
 		// Create and set domain model to the component
 		var oModel = new sap.ui.model.odata.ODataModel(sServiceUrl, true);

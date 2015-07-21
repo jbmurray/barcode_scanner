@@ -1,4 +1,4 @@
-sap.ui.core.mvc.Controller.extend("bf.scanner.controller.AddProduct", {
+sap.ui.core.mvc.Controller.extend("jm.scanner.controller.AddProduct", {
 
 	oAlertDialog : null,
 	oBusyDialog : null,
@@ -82,7 +82,7 @@ sap.ui.core.mvc.Controller.extend("bf.scanner.controller.AddProduct", {
 		// Otherwise, get highest existing ID, and invoke create for new product
 		if (!this.getView().getModel("newProduct").getProperty("/Detail/Name")) {
 			if (!this.oAlertDialog) {
-				this.oAlertDialog = sap.ui.xmlfragment("bf.scanner.fragment.NameRequiredDialog", this);
+				this.oAlertDialog = sap.ui.xmlfragment("jm.scanner.fragment.NameRequiredDialog", this);
 				this.getView().addDependent(this.oAlertDialog);
 			}
 			this.oAlertDialog.open();
