@@ -47,7 +47,8 @@
 				<ToolbarSpacer/>
 				<Button
 					icon="sap-icon://bar-code"
-					press="onBarcodePress" />
+					press="onBarcodePress"
+					visible="{device>/isMobile}"/>
 				<Button
 					icon="sap-icon://add"
 					tooltip="{i18n>masterFooterAddButtonTooltip}"

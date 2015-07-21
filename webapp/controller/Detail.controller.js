@@ -1,7 +1,7 @@
-jQuery.sap.require("bf.scanner.util.Formatter");
-jQuery.sap.require("bf.scanner.util.Controller");
+jQuery.sap.require("jm.scanner.util.Formatter");
+jQuery.sap.require("jm.scanner.util.Controller");
 
-bf.scanner.util.Controller.extend("bf.scanner.controller.Detail", {
+jm.scanner.util.Controller.extend("jm.scanner.controller.Detail", {
 
 	onInit : function() {
 		this.oInitialLoadFinishedDeferred = jQuery.Deferred();
@@ -40,7 +40,7 @@ bf.scanner.util.Controller.extend("bf.scanner.controller.Detail", {
 
 			var oIconTabBar = oView.byId("idIconTabBar");
 			oIconTabBar.getItems().forEach(function(oItem) {
-				oItem.bindElement(bf.scanner.util.Formatter.uppercaseFirstChar(oItem.getKey()));
+				oItem.bindElement(jm.scanner.util.Formatter.uppercaseFirstChar(oItem.getKey()));
 			});
 
 			// Which tab?
@@ -81,7 +81,7 @@ bf.scanner.util.Controller.extend("bf.scanner.controller.Detail", {
 	showEmptyView : function () {
 		this.getRouter().myNavToWithoutHash({
 			currentView : this.getView(),
-			targetViewName : "bf.scanner.view.NotFound",
+			targetViewName : "jm.scanner.view.NotFound",
 			targetViewType : "XML"
 		});
 	},

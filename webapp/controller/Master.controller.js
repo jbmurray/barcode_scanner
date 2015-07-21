@@ -1,7 +1,7 @@
-jQuery.sap.require("bf.scanner.util.Formatter");
-jQuery.sap.require("bf.scanner.util.Controller");
+jQuery.sap.require("jm.scanner.util.Formatter");
+jQuery.sap.require("jm.scanner.util.Controller");
 
-bf.scanner.util.Controller.extend("bf.scanner.controller.Master", {
+jm.scanner.util.Controller.extend("jm.scanner.controller.Master", {
 
 	onInit : function() {
 		this.oInitialLoadFinishedDeferred = jQuery.Deferred();
@@ -35,7 +35,7 @@ bf.scanner.util.Controller.extend("bf.scanner.controller.Master", {
 		//Load the detail view in desktop
 		this.getRouter().myNavToWithoutHash({
 			currentView : this.getView(),
-			targetViewName : "bf.scanner.view.Detail",
+			targetViewName : "jm.scanner.view.Detail",
 			targetViewType : "XML"
 		});
 
@@ -123,37 +123,40 @@ bf.scanner.util.Controller.extend("bf.scanner.controller.Master", {
 	onAddProduct : function() {
 		this.getRouter().myNavToWithoutHash({
 			currentView : this.getView(),
-			targetViewName : "bf.scanner.view.AddProduct",
+			targetViewName : "jm.scanner.view.AddProduct",
 			targetViewType : "XML",
 			transition : "slide"
 		});
 	},
 
 	onBarcodePress : function(oEvent) {
-    var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+		var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
-    scanner.scan( function (result) {
+		scanner.scan($.proxy(this.onBarcodeSuccess, this), $.proxy(this.onBarcodeError, this));
+	},
 
-      alert("We got a barcode\n" +
-        "Result: " + result.text + "\n" +
-        "Format: " + result.format + "\n" +
-        "Cancelled: " + result.cancelled);
+	onBarcodeSuccess: function(result){
+		var oView = this.getView();
+		var oList = oView.byId("list");
+		var oSelected = oList.getSelectedItem();
+		if (oSelected) {
+			oList.setSelectedItemById(oSelected.getId(), false);
+		}
 
-      console.log("Scanner result: \n" +
-        "text: " + result.text + "\n" +
-        "format: " + result.format + "\n" +
-        "cancelled: " + result.cancelled + "\n");
-      document.getElementById("info").innerHTML = result.text;
-      console.log(result);
-      /*
-       if (args.format == "QR_CODE") {
-       window.plugins.childBrowser.showWebPage(args.text, { showLocationBar: false });
-       }
-       */
+		this.navTo("detail", {
+			from: "master",
+			product : result.text,
+			tab: "supplier"
+		});
 
-    }, function (error) {
-      console.log("Scanning failed: ", error);
-    } );
-  }
+		console.log("Scanner result: \n" +
+			"text: " + result.text + "\n" +
+			"format: " + result.format + "\n" +
+			"cancelled: " + result.cancelled + "\n");
+	},
+
+	onBarcodeError: function(error) {
+		console.log("Scanning failed: ", error);
+	}
 
 });

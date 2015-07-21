@@ -1,6 +1,6 @@
-jQuery.sap.declare("bf.scanner.util.Formatter");
+jQuery.sap.declare("jm.scanner.util.Formatter");
 
-bf.scanner.util.Formatter = {
+jm.scanner.util.Formatter = {
 
 	uppercaseFirstChar : function(sStr) {
 		return sStr.charAt(0).toUpperCase() + sStr.slice(1);

@@ -1,7 +1,7 @@
-jQuery.sap.declare("bf.scanner.Component");
-jQuery.sap.require("bf.scanner.MyRouter");
+jQuery.sap.declare("jm.scanner.Component");
+jQuery.sap.require("jm.scanner.MyRouter");
 
-sap.ui.core.UIComponent.extend("bf.scanner.Component", {
+sap.ui.core.UIComponent.extend("jm.scanner.Component", {
 	metadata : {
 		name : "Barcode Test",
 		version : "1.0",
@@ -11,7 +11,7 @@ sap.ui.core.UIComponent.extend("bf.scanner.Component", {
 			components : []
 		},
 
-		rootView : "bf.scanner.view.App",
+		rootView : "jm.scanner.view.App",
 
 		config : {
 			resourceBundle : "i18n/messageBundle.properties",
@@ -23,9 +23,9 @@ sap.ui.core.UIComponent.extend("bf.scanner.Component", {
 
 		routing : {
 			config : {
-				routerClass : bf.scanner.MyRouter,
+				routerClass : jm.scanner.MyRouter,
 				viewType : "XML",
-				viewPath : "bf.scanner.view",
+				viewPath : "jm.scanner.view",
 				targetAggregation : "detailPages",
 				clearTarget : false
 			},
@@ -69,7 +69,7 @@ sap.ui.core.UIComponent.extend("bf.scanner.Component", {
 
 		// always use absolute paths relative to our own component
 		// (relative paths will fail if running in the Fiori Launchpad)
-		var rootPath = jQuery.sap.getModulePath("bf.scanner");
+		var rootPath = jQuery.sap.getModulePath("jm.scanner");
 
 		// set i18n model
 		var i18nModel = new sap.ui.model.resource.ResourceModel({
@@ -84,16 +84,17 @@ sap.ui.core.UIComponent.extend("bf.scanner.Component", {
 		this.setModel(oModel);
 
 		// set device model
-		var deviceModel = new sap.ui.model.json.JSONModel({
-			isTouch : sap.ui.Device.support.touch,
-			isNoTouch : !sap.ui.Device.support.touch,
-			isPhone : sap.ui.Device.system.phone,
-			isNoPhone : !sap.ui.Device.system.phone,
-			listMode : sap.ui.Device.system.phone ? "None" : "SingleSelectMaster",
-			listItemType : sap.ui.Device.system.phone ? "Active" : "Inactive"
+		var bIsPhone = sap.ui.Device.system.phone;
+		var bIsMobile = !sap.ui.Device.system.desktop;
+		var oDeviceModel = new sap.ui.model.json.JSONModel({
+			isPhone : bIsPhone,
+			isNoPhone : !bIsPhone,
+			isMobile: bIsMobile,
+			listMode : bIsPhone ? "None" : "SingleSelectMaster",
+			listItemType : bIsPhone ? "Active" : "Inactive"
 		});
-		deviceModel.setDefaultBindingMode("OneWay");
-		this.setModel(deviceModel, "device");
+		oDeviceModel.setDefaultBindingMode("OneWay");
+		this.setModel(oDeviceModel, "device");
 
 		this.getRouter().initialize();
 
