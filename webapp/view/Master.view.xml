@@ -43,17 +43,20 @@
 			</List>
 		</content>
 		<footer>
-			<Toolbar>
-				<ToolbarSpacer/>
-				<Button
-					icon="sap-icon://bar-code"
-					press="onBarcodePress"
-					visible="{device>/isMobile}"/>
-				<Button
-					icon="sap-icon://add"
-					tooltip="{i18n>masterFooterAddButtonTooltip}"
-					press="onAddProduct" />
-			</Toolbar>
+			<Bar>
+				<contentLeft>
+					<Button
+							icon="sap-icon://bar-code"
+							press="onBarcodePress"
+							visible="{device>/isMobile}"/>
+				</contentLeft>
+				<contentRight>
+					<Button
+							icon="sap-icon://add"
+							tooltip="{i18n>masterFooterAddButtonTooltip}"
+							press="onAddProduct" />
+				</contentRight>
+			</Bar>
 		</footer>
 	</Page>
 </mvc:View>

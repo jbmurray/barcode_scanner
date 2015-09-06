@@ -107,15 +107,16 @@ jm.scanner.util.Controller.extend("jm.scanner.controller.Master", {
 	onSelect : function(oEvent) {
 		// Get the list item, either from the listItem parameter or from the event's
 		// source itself (will depend on the device-dependent mode).
-		this.showDetail(oEvent.getParameter("listItem") || oEvent.getSource());
+		var oItem = oEvent.getParameter("listItem") || oEvent.getSource();
+		this.showDetail(oItem.getBindingContext().getPath().substr(1));
 	},
 
-	showDetail : function(oItem) {
+	showDetail : function(sPath) {
 		// If we're on a phone, include nav in history; if not, don't.
 		var bReplace = jQuery.device.is.phone ? false : true;
 		this.getRouter().navTo("product", {
 			from: "master",
-			product: oItem.getBindingContext().getPath().substr(1),
+			product: sPath,
 			tab: this.sTab || "supplier"
 		}, bReplace);
 	},
@@ -143,11 +144,7 @@ jm.scanner.util.Controller.extend("jm.scanner.controller.Master", {
 			oList.setSelectedItemById(oSelected.getId(), false);
 		}
 
-		this.navTo("detail", {
-			from: "master",
-			product : result.text,
-			tab: "supplier"
-		});
+		this.showDetail(result.text);
 
 		console.log("Scanner result: \n" +
 			"text: " + result.text + "\n" +
